@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  micro.purchaseapi:
+    image: ${DOCKER_REGISTRY-}micropurchaseapi
+    build:
+      context: .
+      dockerfile: Micro.PurchaseApi/Dockerfile
+
+  micro.prodcutapi:
+    image: ${DOCKER_REGISTRY-}microprodcutapi
+    build:
+      context: .
+      dockerfile: Micro.ProdcutApi/Dockerfile
+

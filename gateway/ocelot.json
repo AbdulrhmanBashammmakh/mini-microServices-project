@@ -1,0 +1,74 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/Items",
+      "UpstreamHttpMethod": [ "Get","Post" ],
+      "DownstreamScheme": "http",
+      "SwaggerKey": "product",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Items"
+    },
+    {
+      "UpstreamPathTemplate": "/Items/{id}",
+      "UpstreamHttpMethod": [ "Get","Delete" ],
+      "DownstreamScheme": "http",
+      "SwaggerKey": "product",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Items/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/Vendors",
+      "UpstreamHttpMethod": [ "Get", "POST" ],
+      "SwaggerKey": "purchase",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6002
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Vendors"
+    }
+
+
+  ],
+
+  "SwaggerEndPoints": [
+    {
+      "Key": "product",
+      "Config": [
+        {
+          "Name": "product API",
+          "Version": "v1",
+          "Url": "http://localhost:6001/swagger/v1/swagger.json"
+
+        }
+      ]
+    },
+    {
+      "Key": "purchase",
+      "Config": [
+
+        {
+          "Name": "purchase API",
+          "Version": "v1",
+          "Url": "http://localhost:6002/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+
+    "BaseUrl": "http://localhost"
+  }
+}
