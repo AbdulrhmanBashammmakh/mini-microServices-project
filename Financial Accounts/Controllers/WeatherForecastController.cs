@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SaleApi.Controllers
+namespace Financial_Accounts.Controllers
 {
     [ApiController]
     [Route("[controller]")]

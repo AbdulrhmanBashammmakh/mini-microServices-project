@@ -1,6 +1,6 @@
 using System;
 
-namespace SaleApi
+namespace Financial_Accounts
 {
     public class WeatherForecast
     {

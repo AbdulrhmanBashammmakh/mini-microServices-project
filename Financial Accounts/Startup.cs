@@ -1,3 +1,4 @@
+using Financial_Accounts.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,13 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using SaleApi.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SaleApi
+namespace Financial_Accounts
 {
     public class Startup
     {
@@ -27,15 +27,18 @@ namespace SaleApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SaleApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Financial_Accounts", Version = "v1" });
             });
-            services.AddDbContext<SaleDbContext>(options => options.UseSqlServer(connectionString));
-        //    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-         //   services.AddScoped<IUnitOfWork, UnitOfWork>();
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+           
+            services.AddDbContext<FinancialDbContext>(options => options.UseSqlServer(connectionString));
+
+            //    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //   services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +48,7 @@ namespace SaleApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SaleApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Financial_Accounts v1"));
             }
 
             app.UseRouting();
