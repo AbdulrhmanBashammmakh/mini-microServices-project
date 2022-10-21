@@ -16,6 +16,12 @@ mini-microServices-project
  in progress...
 
 
+# Structure of Microservices 
+
+
+in progress...
+
+
 # The Microservices and communication
 
 
